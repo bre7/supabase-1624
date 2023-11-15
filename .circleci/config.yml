@@ -26,11 +26,17 @@ jobs:
             nvm --version
             yarn --version
       - run:
-          name: Test
+          name: Test with Yarn 3.6.4
           command: |
             yarn init -y
             yarn set version 3.6.4
             yarn add -D supabase
+      - run: yarn supabase -h
+      - run:
+          name: Test with Yarn 4.0.2
+          command: |
+            yarn set version 4.0.2
+            yarn install
       - run: yarn supabase -h
 workflows:
   my-workflow:
